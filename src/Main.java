@@ -13,29 +13,34 @@ public class Main {
 
         for(int i=0; i<testCnt; i++){
 
+            String buildingRule = typeIn.readLine();
 //            건물의 갯수
-            int buildingCnt = Integer.parseInt(typeIn.readLine().split(" ")[0]);
+            int buildingCnt = Integer.parseInt(buildingRule.split(" ")[0]);
 
 //            건물 간의 건설 수 규칙의 총개수
-            int ruleCnt = Integer.parseInt(typeIn.readLine().split(" ")[1]);
+            int ruleCnt = Integer.parseInt(buildingRule.split(" ")[1]);
 
-            String _constructTime = typeIn.readLine();
-            String[] _constructArr = _constructTime.split(" ");
+            int[] _constructArr = new int[buildingCnt];
+
+            String _construct = typeIn.readLine();
+            for(int k=0; k<buildingCnt; k++){
+                _constructArr[k] = Integer.parseInt(_construct.split(" ")[k]);
+            }
 
             int result = 0;
-            for(int j=0; j<_constructArr.length; j++){
+            for(int j=0; j<ruleCnt; j++){
 
                 int first = Integer.parseInt(typeIn.readLine().split(" ")[0]);
                 int second = Integer.parseInt(typeIn.readLine().split(" ")[1]);
 
-                int compareVal = Integer.compare(Integer.parseInt(_constructArr[first - 1]), Integer.parseInt(_constructArr[second - 1]));
+                int compareVal = Integer.compare(_constructArr[first - 1], _constructArr[second - 1]);
 
                 if(compareVal >= 0){
-                    result = result + Integer.parseInt(_constructArr[first -1]);
+                    result = result + _constructArr[first -1];
                 }
 
                 else if(compareVal < 0) {
-                    result = result + Integer.parseInt(_constructArr[second -1]);
+                    result = result + _constructArr[second -1];
                 }
 
             }
