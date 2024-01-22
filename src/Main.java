@@ -33,6 +33,7 @@ public class Main {
                 if(compareVal >= 0){
                     result = result + Integer.parseInt(_constructArr[first -1]);
                 }
+
                 else if(compareVal < 0) {
                     result = result + Integer.parseInt(_constructArr[second -1]);
                 }
